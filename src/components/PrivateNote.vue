@@ -1,10 +1,12 @@
 <template>
   <div class="privateNote">
-    <h1>Private Notes</h1>
     <div class="private-notes-area">
       <div v-for="(privateNote, id) in privateNotes" v-bind:key="id">
         <div class="private-note">
           {{ privateNote.content }}
+        </div>
+        <div class="private-note">
+          {{ privateNote.createdAt }}
         </div>
       </div>
     </div>
@@ -39,7 +41,7 @@ export default {
   methods: {
     createPrivateNote: async function () {
       if (this.content === "") return
-      const privateNote = {content: this.content}
+      const privateNote = {content: this.content, created_at: this.createdAt}
       try {
         this.content = ""
         await API.graphql(graphqlOperation(createPrivateNote, {input: privateNote}))
