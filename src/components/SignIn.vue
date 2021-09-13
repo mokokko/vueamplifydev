@@ -34,6 +34,13 @@ export default {
               required: true,
               displayOrder: 2,
               type: 'password'
+            },
+            {
+              label: 'Email',
+              key: 'email',
+              required: true,
+              displayOrder: 3,
+              type: 'email'
             }
           ]
         }
