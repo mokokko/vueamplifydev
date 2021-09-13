@@ -1,5 +1,6 @@
 # Amplify + Vue.js Hands On
 
+※本資料は「https://aws.amazon.com/jp/builders-flash/202008/amplify-crud-app/」を一部カスタマイズしたものになります
 Amplify + Vue.js で簡単にサーバーレスPWAを構築するためのリポジトリです。  
 Chrome, Cloud9, GitHubを使う想定です。  
   
@@ -798,8 +799,20 @@ ec2-user:~/environment/notes (master)
 
 #### 必要パッケージのインストール
 
+npmでパッケージを管理する構成ファイル「package.json」をコピーし、パッケージをインストールします。
+
+
+- vueamplifydev/package.json
+
+の内容を
+
+- notes/package.json
+
+に上書き
+notesディレクトリ内で以下を実行
+
 ```
-npm i aws-amplify aws-amplify-vue lodash
+npm install
 ```
 
 #### localise.js
@@ -828,7 +841,7 @@ npm i aws-amplify aws-amplify-vue lodash
 
 #### PrivateNote.vue
 
-今回の主要な機能であるメモ機能を提供するコンポーネントです
+今回の主要な機能である画面機能を提供するコンポーネントです
 
 - vueamplifydev/src/components/PrivateNote.vue
 
@@ -889,6 +902,19 @@ Vuexを使って状態管理をするためのファイルです。
 - notes/src/App.vue
 
 に上書き
+
+#### plugins/vuetify.js
+
+VueのUIを整えるプラグインの設定です。
+
+- vueamplifydev/src/plugins/vuetify.js
+
+の内容を
+
+- notes/src/plugins/vuetify.js
+
+に上書き
+
 
 #### 動作確認
 
