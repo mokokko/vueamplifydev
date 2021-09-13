@@ -1,6 +1,6 @@
 {
   "auth": {
-    "notese34d2809": {
+    "notes124f92b8": {
       "service": "Cognito",
       "providerPlugin": "awscloudformation",
       "dependsOn": [],
@@ -32,7 +32,7 @@
           "defaultAuthentication": {
             "authenticationType": "AMAZON_COGNITO_USER_POOLS",
             "userPoolConfig": {
-              "userPoolId": "authnotese34d2809"
+              "userPoolId": "authnotes124f92b8"
             }
           },
           "additionalAuthenticationProviders": []
