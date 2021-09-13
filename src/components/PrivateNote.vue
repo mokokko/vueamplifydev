@@ -1,16 +1,43 @@
 <template>
   <div class="privateNote">
-    <h1>Private Notes</h1>
-    <div class="private-notes-area">
-      <div v-for="(privateNote, id) in privateNotes" v-bind:key="id">
-        <div class="private-note">
-          {{ privateNote.content }}
-        </div>
-      </div>
-    </div>
+    <v-simple-table dark>
+      <template v-slot:default>
+        <thead>
+          <tr>
+            <th class="text-left">
+              作成時間
+            </th>
+            <th class="text-left">
+              コメント 
+            </th>
+            <th class="text-left">
+              作成者
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            v-for="(privateNote, id) in privateNotes"
+            v-bind:key="id"
+          >
+            <td>{{ privateNote.createdAt }}</td>
+            <td>{{ privateNote.content }}</td>
+            <td>{{ privateNote.content }}</td>
+          </tr>
+        </tbody>
+      </template>
+    </v-simple-table>
     <div id="chat-form">
-      <textarea v-model="content" name="content" class="form" placeholder="Content"></textarea><br/>
-      <button class="submit" v-on:click="createPrivateNote()">Post</button>
+      <v-text-field
+        v-model="content"
+        name="content"
+        label="コメントを入力"
+        :rules="rules"
+        hide-details="auto"
+      ></v-text-field>
+      <v-btn block v-on:click="createPrivateNote()">
+        Post
+      </v-btn>
     </div>
   </div>
 </template>
@@ -39,7 +66,7 @@ export default {
   methods: {
     createPrivateNote: async function () {
       if (this.content === "") return
-      const privateNote = {content: this.content}
+      const privateNote = {content: this.content, created_at: this.createdAt}
       try {
         this.content = ""
         await API.graphql(graphqlOperation(createPrivateNote, {input: privateNote}))
