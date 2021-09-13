@@ -103,7 +103,7 @@ https://aws-amplify.github.io/
 必要コードを転用するため、このリポジトリを環境にクローンします。
 
 ```
-git clone https://github.com/matsuihidetoshi/vueamplifydev.git
+git clone https://github.com/mokokko/vueamplifydev.git
 ```
 
 ## 必要CLIツールインストール
@@ -544,7 +544,7 @@ e arrow keys)
 
 #### 認証に使う情報を選択(↑↓でカーソル移動、Enterで決定)
 
-Emailを選択しEnter
+Usernameを選択しEnter
 
 ```
  Warning: you will not be able to edit these selections. 
@@ -937,6 +937,38 @@ npm run serve
 - フロントエンドのコード
 
 が完成しました。あとは、フロントエンドの本番環境のホスティングができれば完成です。
+
+
+### AmplifyCLIを利用したデプロイ
+
+AWS Amplify Consoleは、フルスタックのサーバーレスウェブアプリケーションをデプロイおよびホストするための、Git ベースのワークフローを提供しています。 ただ、今回は開発しているのが自分だけ、ということもあり、Gitベースでなく手動デプロイを行うことにしました。 Amplify CLIから、AWS Amplify Consoleを利用したアプリケーションホスティングを行いましょう。
+
+`$ amplify add hosting` をターミナルで実行し、以下のように質問に答えていきます。
+
+```
+amplify add hosting
+```
+
+Select the plugin module to execute →　 Hosting with Amplify Console (Managed hosting with custom domains, Continuous deployment)
+Choose a type →　Manual deployment
+
+続けて$ amplify publishコマンドでホスティングを開始しましょう。
+※ `$ amplify publish` は `$ amplify push`と同じようにクラウドリソースへの変更を行なった上で、ウェブアプリケーションを手元でBuildし、Amplify Consoleでホスティングされたアプリケーションを更新するコマンドです。
+
+
+```
+amplify publish
+```
+
+数分待つと以下のように実行結果が返ってきます。 最後のURLにアクセスすると、ウェブサイトが閲覧できます。
+
+```
+✔ Zipping artifacts completed.
+✔ Deployment complete!
+https://production.XXXXXXXXXXX.amplifyapp.com
+```
+
+### AmplifyConsoleを利用したデプロイ
 
 #### GitHubにコードをプッシュ
 
