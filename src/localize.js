@@ -3,7 +3,7 @@ let languageDict = {
   ja:{
     'Sign in to your account': 'アカウントにサインイン',
     'Create a new account': '登録',
-    'Enter your Username': 'メールアドレス',
+    'Enter your Username': 'ユーザー名',
     'Username': 'メールアドレス',
     'Enter your username': 'ユーザ名を入力してください',
     'Password': 'パスワード',
